@@ -5,10 +5,6 @@ import { inject, injectable } from "tsyringe";
 import { TodoEntity } from "@src/domain/entities/todo/todo-entity";
 import { ITodoRepository } from "@src/domain/repository/todo-repository.inteface";
 import { PrismaService } from "../prisma-service";
-import {
-  DefaultPaginationOptions,
-  PaginationOptions,
-} from "@src/domain/pagination";
 @injectable()
 export class TodoRepository implements ITodoRepository {
   constructor(@inject("IDatabase") readonly prisma: PrismaService) {}

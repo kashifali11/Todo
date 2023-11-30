@@ -6,6 +6,5 @@ export abstract class BaseEntity {
 
   constructor({ id }: IEntity) {
     this.id = id;
-    const now = new Date();
   }
 }
