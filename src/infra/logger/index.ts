@@ -1,5 +1,5 @@
 import BunyanLogger from "bunyan";
-
+import ExpressBunyanLogger from "express-bunyan-logger";
 class Logger {
   private logger: BunyanLogger;
   constructor() {
@@ -25,5 +25,7 @@ class Logger {
     this.logger.warn(data);
   }
 }
+
+export const AppLogger = ExpressBunyanLogger();
 
 export default new Logger();

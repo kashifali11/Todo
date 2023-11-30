@@ -12,14 +12,8 @@ export class ValidationError extends DomainException {
   }
 }
 
-export class DatabaseError extends DomainException {
-  constructor(m: string) {
-    super(`Database Error: ${m}`);
-  }
-}
-
 export class NotFoundError extends DomainException {
-  constructor(m: string) {
-    super(`Not Found: ${m}`);
+  constructor(m?: string) {
+    super(`Could not find the requested resource. ${m || ""}`);
   }
 }

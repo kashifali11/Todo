@@ -1,7 +1,7 @@
 import { Result } from "oxide.ts";
-import { DatabaseError, NotFoundError } from "../exceptions";
+import { NotFoundError } from "../exceptions";
 
 export interface IBaseRepository<Entity> {
-  add(item: Entity): Result<string, DatabaseError>;
+  add(item: Entity): Result<string, null>;
   findById(id: string): Result<Entity, NotFoundError>;
 }

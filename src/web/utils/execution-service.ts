@@ -5,6 +5,7 @@ import {
   NotFoundError,
   ValidationError,
 } from "@src/domain/exceptions";
+import logger from "@src/infra/logger";
 import { Response } from "express";
 import { Result } from "oxide.ts";
 import { injectable } from "tsyringe";
@@ -21,7 +22,7 @@ export class ExecutionService {
     ) {
       status = AppErrors.VALIDATION;
     }
-    console.log(error);
+    logger.error(error);
     return { status, message: error.message || "Internal server Error" };
   }
 
@@ -38,11 +39,12 @@ export class ExecutionService {
       const result = service(dto.unwrap());
       if (result.isErr()) {
         const response = this.buildErrorResponse(result.unwrapErr());
+        logger.debug("Todo created.");
         return res.status(response.status).json({ message: response.message });
       }
       return res.status(200).json({ data: result.unwrap() });
     } catch (error) {
-      console.log(error);
+      logger.error(error);
       return res
         .status(AppErrors.GENERIC)
         .json({ message: "Internal Server Error" });

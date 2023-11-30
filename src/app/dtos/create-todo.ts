@@ -3,6 +3,7 @@ import { InputValidationError } from "../AppErrors";
 import { z } from "zod";
 import { TodoEntity } from "@src/domain/entities/todo/todo-entity";
 import { ValidationError } from "@src/domain/exceptions";
+import logger from "@src/infra/logger";
 
 type CreateTodoDTOProps = {
   title: string;
@@ -17,7 +18,6 @@ export class CreateTodoDTO {
   static create(
     props: CreateTodoDTOProps
   ): Result<CreateTodoDTO, InputValidationError> {
-    console.log(props);
     const todoSchema = z.object({
       title: z.string(),
       description: z.string(),

@@ -10,7 +10,6 @@ export class Database {
   }
 
   createRecord(item: any) {
-    console.log(this.data);
     this.data[this.model] = [...(this.data[this.model] || []), item];
   }
 
