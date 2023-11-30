@@ -11,17 +11,14 @@ export class TodoService {
     @inject("ITodoRepository") private readonly todoRepository: ITodoRepository
   ) {}
 
-  addTodo = (
+  addTodo = async (
     todoDto: CreateTodoDTO
-  ): Result<string, AppError | DomainException> => {
-    if (todoDto.todoEntity.isErr()) {
-      return Err(todoDto.todoEntity.unwrapErr());
-    }
-    const todoEntity = todoDto.todoEntity.unwrap();
-    const result = this.todoRepository.add(todoEntity);
+  ): Promise<Result<string, AppError | DomainException>> => {
+    const result = todoDto.todoEntity.map((item) => item);
     if (result.isErr()) {
-      return Err(result.unwrapErr());
+      return result;
     }
-    return Ok(result.unwrap());
+    await this.todoRepository.add(result.unwrap());
+    return Ok("Operation successful");
   };
 }

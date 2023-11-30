@@ -1,6 +1,10 @@
+import { ILogger } from "@src/app/ports/logger.interface";
 import BunyanLogger from "bunyan";
 import ExpressBunyanLogger from "express-bunyan-logger";
-class Logger {
+import { injectable } from "tsyringe";
+
+@injectable()
+class Logger implements ILogger {
   private logger: BunyanLogger;
   constructor() {
     this.logger = BunyanLogger.createLogger({
@@ -28,4 +32,4 @@ class Logger {
 
 export const AppLogger = ExpressBunyanLogger();
 
-export default new Logger();
+export default Logger;

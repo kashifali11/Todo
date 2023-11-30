@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { TodoController } from "../controllers/todo-controller";
 const todoRouter = express.Router();
 
-const todoController = container.resolve<TodoController>("TodoController");
+const todoController = container.resolve(TodoController);
 
 todoRouter.post("/todo", todoController.createTodo);
 
