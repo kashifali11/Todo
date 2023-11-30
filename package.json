@@ -1,0 +1,30 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./bin/index.ts",
+  "scripts": {
+    "dev": "ts-node src/web/server"
+  },
+  "author": "Kashif",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "core-js": "^3.33.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "oxide.ts": "^1.1.0",
+    "tsyringe": "^4.8.0",
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/bunyan": "^1.8.11",
+    "@types/express": "^4.17.21",
+    "@types/uuid": "^9.0.7",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.3.2"
+  }
+}
