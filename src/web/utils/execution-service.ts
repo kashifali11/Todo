@@ -40,7 +40,7 @@ export class ExecutionService {
       const result = await service(dto.unwrap());
       if (result.isErr()) {
         const response = this.buildErrorResponse(result.unwrapErr());
-        this.logger.debug("Todo created.");
+        this.logger.debug("Request Successful");
         return res.status(response.status).json({ message: response.message });
       }
       return res.status(200).json({ data: result.unwrap() });
