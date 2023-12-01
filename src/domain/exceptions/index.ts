@@ -1,18 +1,17 @@
-export class DomainException extends Error {
+export class DomainError {
   message: string;
   constructor(message: string) {
-    super(message);
     this.message = message;
   }
 }
 
-export class ValidationError extends DomainException {
+export class ValidationError extends DomainError {
   constructor(m: string) {
     super(`Validation Error: ${m}`);
   }
 }
 
-export class NotFoundError extends DomainException {
+export class NotFoundError extends DomainError {
   constructor(m?: string) {
     super(`Could not find the requested resource. ${m || ""}`);
   }

@@ -1,4 +1,4 @@
-import { DomainException } from "@src/domain/exceptions";
+import { DomainError } from "@src/domain/exceptions";
 import { ITodoRepository } from "@src/domain/repository/todo-repository.inteface";
 import { Err, Ok, Result } from "oxide.ts";
 import { inject, injectable } from "tsyringe";
@@ -16,7 +16,7 @@ export class TodoService {
 
   addTodo = async (
     createTodo: CreateTodoDTO
-  ): Promise<Result<string, AppError | DomainException>> => {
+  ): Promise<Result<string, AppError | DomainError>> => {
     const result = createTodo.todoEntity.map((item) => item);
     if (result.isErr()) {
       return result;

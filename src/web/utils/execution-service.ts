@@ -1,7 +1,7 @@
 import { AppError, AppErrors, InputValidationError } from "@src/app/AppErrors";
 import { ILogger } from "@src/app/ports/logger.interface";
 import {
-  DomainException,
+  DomainError,
   NotFoundError,
   ValidationError,
 } from "@src/domain/exceptions";
@@ -13,7 +13,7 @@ import { inject, injectable } from "tsyringe";
 export class ExecutionService {
   constructor(@inject("ILogger") private readonly logger: ILogger) {}
 
-  private buildErrorResponse(error: DomainException | AppError) {
+  private buildErrorResponse(error: DomainError | AppError) {
     let status = AppErrors.GENERIC;
     if (error instanceof NotFoundError) {
       status = AppErrors.NOT_FOUND;
@@ -30,7 +30,7 @@ export class ExecutionService {
   async execute<T>(
     res: Response,
     service: Function,
-    dto: Result<T, DomainException | AppError>
+    dto: Result<T, DomainError | AppError>
   ) {
     try {
       if (dto.isErr()) {
