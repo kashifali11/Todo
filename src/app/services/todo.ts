@@ -6,7 +6,7 @@ import { CreateTodoDTO } from "../dtos/create-todo";
 import { AppError } from "../AppErrors";
 import { GetTodoDTO } from "../dtos/get-todo";
 import { GetPaginatedTodosDTO } from "../dtos/get-paginated-todos-dto";
-import { Paginated } from "@src/domain/pagination";
+import { Paginated } from "@src/domain/utils/pagination";
 
 @injectable()
 export class TodoService {

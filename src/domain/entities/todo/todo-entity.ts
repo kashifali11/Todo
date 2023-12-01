@@ -2,7 +2,7 @@ import { Err, Ok, Result } from "oxide.ts";
 import { BaseEntity } from "../base-entity";
 import { ITodo } from "./ITodo";
 import { v4 as uuid } from "uuid";
-import guards from "@src/domain/guards/guards";
+import guards from "@src/domain/utils/guards";
 import { ValidationError } from "@src/domain/exceptions";
 
 interface CreateTodoEntityProps extends Omit<ITodo, "id"> {

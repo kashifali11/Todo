@@ -4,7 +4,7 @@ import { z } from "zod";
 import {
   DefaultPaginationOptions,
   PaginationOptions,
-} from "@src/domain/pagination";
+} from "@src/domain/utils/pagination";
 
 type GetPaginatedTodosDTOProps = PaginationOptions;
 

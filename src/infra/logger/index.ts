@@ -1,14 +1,12 @@
 import { ILogger } from "@src/app/ports/logger.interface";
-import BunyanLogger from "bunyan";
-import ExpressBunyanLogger from "express-bunyan-logger";
 import { injectable } from "tsyringe";
-
+import pino, { BaseLogger } from "pino";
+import PinoHttp from "pino-http";
 @injectable()
 class Logger implements ILogger {
-  private logger: BunyanLogger;
+  private logger: BaseLogger;
   constructor() {
-    this.logger = BunyanLogger.createLogger({
-      name: "todo-app",
+    this.logger = pino({
       level: "info",
     });
   }
@@ -30,6 +28,5 @@ class Logger implements ILogger {
   }
 }
 
-export const AppLogger = ExpressBunyanLogger();
-
+export const AppLogger = PinoHttp({ level: "info" });
 export default Logger;
