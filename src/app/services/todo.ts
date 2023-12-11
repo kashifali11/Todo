@@ -15,9 +15,9 @@ export class TodoService {
   ) {}
 
   addTodo = async (
-    createTodo: CreateTodoDTO
+    createTodoDto: CreateTodoDTO
   ): Promise<Result<string, AppError | DomainError>> => {
-    const result = createTodo.todoEntity.map((item) => item);
+    const result = createTodoDto.todoEntity.map((item) => item);
     if (result.isErr()) {
       return result;
     }
